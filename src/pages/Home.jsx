@@ -2,15 +2,19 @@ import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Footer from "../components/Footer";
 import ProjectCard from "../components/ProjectCard";
+import myLeagueImage from "../assets/myleague.png";
+import urlCutrImage from "../assets/urlcutr.png";
 
 const projects = [
   {
-    link: "#",
+    image: urlCutrImage,
+    link: "https://github.com/cburke6897/URL-Cutr",
     title: "URL Cutr",
     description: "A URL shortener with in-built user dashboard for managing and tracking shortened links.",
   },
   {
-    link: "#",
+    image: myLeagueImage,
+    link: "https://github.com/cburke6897/MyLeague-Fantasy-Tracker",
     title: "MyLeague",
     description: "A Java application built for class that enables drafting and managing a fantasy football league.",
   },
