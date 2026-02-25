@@ -17,6 +17,10 @@ export default function ImageCard({
 				/>
 			</div>
 
+			<h2 className="text-xl font-semibold text-text-light dark:text-text-dark">
+				Christopher Burke
+			</h2>
+
 			<div className="flex items-center gap-3">
 				<IconButton
 					href={githubUrl}
