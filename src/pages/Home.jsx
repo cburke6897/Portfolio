@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Footer from "../components/Footer";
 import ProjectCard from "../components/ProjectCard";
+import ExperienceCard from "../components/ExperienceCard";
 import myLeagueImage from "../assets/myleague.png";
 import urlCutrImage from "../assets/urlcutr.png";
 
@@ -17,6 +18,37 @@ const projects = [
     link: "https://github.com/cburke6897/MyLeague-Fantasy-Tracker",
     title: "MyLeague",
     description: "A Java application built for class that enables drafting and managing a fantasy football league.",
+  },
+];
+
+const experiences = [
+  {
+    title: "Education — Ball State University, IN",
+    fromDate: "Aug 2024",
+    toDate: "May 2028",
+    description:
+      "4.0 GPA. B.S. in Computer Science with a minor in Japanese. Concentrations in Web and Mobile Development, plus Data Analytics and Machine Learning.",
+  },
+  {
+    title: "Teaching Assistant — Ball State University, Muncie, IN",
+    fromDate: "Jan 2025",
+    toDate: "Present",
+    description:
+      "Assisted 3 professors across 5 classes, tailoring support to each course. Tutored students in Python, Java, and core programming concepts while balancing 20 hours/week with classes, improving assignment outcomes.",
+  },
+  {
+    title: "Research Assistant — Ball State University, Muncie, IN",
+    fromDate: "Sep 2024",
+    toDate: "Present",
+    description:
+      "Presented a peer-reviewed publication on digital media preservation as lead author; submitted a second work to an international conference. Built Python API pipelines with Pandas for large datasets, then analyzed in Excel and R with Quarto to produce visuals.",
+  },
+  {
+    title: "Web Dev Intern — Nextech, Indianapolis, IN",
+    fromDate: "Jun 2022",
+    toDate: "Jul 2022",
+    description:
+      "Collaborated on a four-person team to deliver a React site in two months. Strengthened HTML and JavaScript skills through hands-on work and mentoring from local professionals.",
   },
 ];
 
@@ -51,6 +83,23 @@ export default function Home() {
                     link={project.link}
                     title={project.title}
                     description={project.description}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
+                MY <br /> EXPERIENCE
+              </h2>
+              <div className="grid grid-cols-1 gap-6 -mx-4">
+                {experiences.map((experience) => (
+                  <ExperienceCard
+                    key={experience.title}
+                    title={experience.title}
+                    description={experience.description}
+                    fromDate={experience.fromDate}
+                    toDate={experience.toDate}
                   />
                 ))}
               </div>
