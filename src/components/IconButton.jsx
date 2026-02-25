@@ -22,7 +22,12 @@ export default function IconButton({
 		>
 			{Icon ? <Icon className="h-5 w-5" aria-hidden="true" /> : null}
 			{!Icon && iconSrc ? (
-				<img src={iconSrc} alt="" className="h-5 w-5" aria-hidden="true" />
+				<img 
+					src={iconSrc} 
+					alt="" 
+					className="h-5 w-5 dark:invert" 
+					aria-hidden="true" 
+				/>
 			) : null}
 		</a>
 	);
