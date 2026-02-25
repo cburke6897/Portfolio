@@ -1,12 +1,13 @@
 import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition-colors">
       <Navbar />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pb-16 pt-24">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24">
         <div className="grid gap-12 lg:grid-cols-[260px_1fr]">
           <aside className="lg:sticky lg:top-24 self-start">
             <ImageCard />
@@ -73,12 +74,7 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Footer */}
-            <footer className="py-8 px-4 mt-12 bg-bg-light dark:bg-bg-dark border-t border-text-light/10 dark:border-text-dark/10 rounded-2xl">
-              <div className="max-w-4xl mx-auto text-center text-text-light/60 dark:text-text-dark/60">
-                <p>&copy; 2026 My Portfolio. All rights reserved.</p>
-              </div>
-            </footer>
+            <Footer />
           </main>
         </div>
       </div>
