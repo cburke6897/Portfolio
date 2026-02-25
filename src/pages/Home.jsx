@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ProjectCard from "../components/ProjectCard";
 import ExperienceCard from "../components/ExperienceCard";
 import ToolCard from "../components/ToolCard";
+import ContactForm from "../components/ContactForm";
 import myLeagueImage from "../assets/myleague.png";
 import urlCutrImage from "../assets/urlcutr.png";
 import fastapiIcon from "../assets/fastapi.svg";
@@ -179,6 +180,15 @@ export default function Home() {
                     onClick={() => handleToolClick(tool.link)}
                   />
                 ))}
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
+                CONTACT <br /> ME
+              </h2>
+              <div className="max-w-2xl">
+                <ContactForm />
               </div>
             </section>
 
