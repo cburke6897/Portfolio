@@ -14,9 +14,12 @@ export default function Home() {
           </aside>
 
           <main>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-8">
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-light dark:text-text-dark mb-8 pr-32">
               SOFTWARE ENGINEER
             </h1>
+            <p className="text-base md:text-lg text-text-light/80 dark:text-text-dark/80 max-w-2xl mb-12 pr-40">
+              Passionate about building scalable systems with clean code. Experienced in designing robust architectures that solve real-world problems.
+            </p>
             <Footer />
           </main>
         </div>
