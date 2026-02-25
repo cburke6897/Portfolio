@@ -1,9 +1,9 @@
-import DropdownMenu from "../components/DropdownMenu";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition-colors">
-      <DropdownMenu />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-screen px-4">
