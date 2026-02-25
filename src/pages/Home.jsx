@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Footer from "../components/Footer";
 import ProjectCard from "../components/ProjectCard";
 import ExperienceCard from "../components/ExperienceCard";
+import ToolCard from "../components/ToolCard";
 import myLeagueImage from "../assets/myleague.png";
 import urlCutrImage from "../assets/urlcutr.png";
+import fastapiIcon from "../assets/fastapi.svg";
+import viteIcon from "../assets/vite.svg";
 
 const projects = [
   {
@@ -52,7 +56,62 @@ const experiences = [
   },
 ];
 
+const tools = [
+  {
+    stackIconName: "java",
+    title: "Java",
+    description: "Backend and desktop apps",
+    link: "https://www.oracle.com/java/",
+  },
+  {
+    stackIconName: "js",
+    title: "JavaScript",
+    description: "Interactive web applications",
+    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  {
+    stackIconName: "python",
+    title: "Python",
+    description: "Data analysis and automation",
+    link: "https://www.python.org/",
+  },
+  {
+    stackIconName: "react",
+    title: "React",
+    description: "Component-based UI library",
+    link: "https://react.dev",
+  },
+  {
+    iconSrc: viteIcon,
+    title: "Vite",
+    description: "Fast build tool",
+    link: "https://vite.dev",
+  },
+  {
+    iconSrc: fastapiIcon,
+    title: "FastAPI",
+    description: "High-performance REST APIs",
+    link: "https://fastapi.tiangolo.com",
+  },
+  {
+    stackIconName: "postgresql",
+    title: "PostgreSQL",
+    description: "Powerful relational database",
+    link: "https://www.postgresql.org/",
+  },
+  {
+    stackIconName: "redis",
+    title: "Redis",
+    description: "In-memory data store",
+    link: "https://redis.io",
+  },
+];
+
 export default function Home() {
+  const handleToolClick = (link) => {
+    window.open(link, "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition-colors">
       <Navbar />
@@ -100,6 +159,24 @@ export default function Home() {
                     description={experience.description}
                     fromDate={experience.fromDate}
                     toDate={experience.toDate}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
+                MY <br /> TOOLS
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {tools.map((tool) => (
+                  <ToolCard
+                    key={tool.title}
+                    stackIconName={tool.stackIconName}
+                    iconSrc={tool.iconSrc}
+                    title={tool.title}
+                    description={tool.description}
+                    onClick={() => handleToolClick(tool.link)}
                   />
                 ))}
               </div>
