@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function ContactForm() {
   const [result, setResult] = useState(null);
+  const [theme, setTheme] = useState(() => (
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  ));
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const syncTheme = () => {
+      setTheme(root.classList.contains("dark") ? "dark" : "light");
+    };
+
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   const onCaptchaChange = (token) => {
     setValue("h-captcha-response", token);
@@ -86,13 +103,13 @@ export default function ContactForm() {
           sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
           reCaptchaCompat={false}
           onVerify={onCaptchaChange}
-          theme="dark"
+          theme={theme}
           size="normal"
         />
         
         <button
           type="submit"
-          className="flex-1 h-19.5 px-6 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-xl font-semibold rounded-lg transition-colors"
+          className="flex-1 h-19.5 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors"
         >
           Send Message
         </button>
