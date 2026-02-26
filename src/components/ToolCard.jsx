@@ -1,31 +1,6 @@
-import { useState, useEffect } from "react";
 import StackIcon from "tech-stack-icons";
 
 function ToolCard({ icon: Icon, iconSrc, stackIconName, title, description, onClick }) {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
-    }
-    return "light";
-  });
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setTheme(
-        document.documentElement.classList.contains("dark") ? "dark" : "light"
-      );
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="group bg-white dark:bg-gray-800 rounded-2xl rounded-tl-none rounded-br-none p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer flex flex-row items-start gap-3" onClick={onClick}>
       <div className="shrink-0 w-10 h-10 flex items-center justify-center">
