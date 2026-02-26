@@ -20,7 +20,7 @@ export default function Projects() {
               MY <br /> PROJECTS
             </h1>
 
-            <section className="mb-12 flex-grow">
+            <section className="mb-12 grow">
               <div className="grid grid-cols-1 gap-6 -mx-4">
                 {projects.map((project) => (
                   <ProjectCard
