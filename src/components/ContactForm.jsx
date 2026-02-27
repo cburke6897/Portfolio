@@ -33,14 +33,13 @@ export default function ContactForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
     const recaptchaValue = reCaptchaRef.current.getValue();
 
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': "contact-form",
+        'form-name': "contact",
         'g-recaptcha-response': recaptchaValue,
         ...state,
       }),
@@ -59,25 +58,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form 
-      name = "contact-form" 
-      method = "POST" 
-      onSubmit={onSubmit} 
-      className="space-y-3"
-      data-netlify="true"
-      data-netlify-recaptcha="true"
-    >
-      <input type="hidden" name="form-name" value="contact-form"/>
-      <input type="hidden" name="bot-field"/>
-
+    <form onSubmit={onSubmit}>
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
             Name
           </label>
           <input
-            id="name-input"
-            type="name"
+            type="text"
             name="name"
             onChange={handleChange}
             required
@@ -91,7 +79,6 @@ export default function ContactForm() {
             Email
           </label>
           <input
-          id="email-input"
             type="email"
             name="email"
             onChange={handleChange}
@@ -107,7 +94,6 @@ export default function ContactForm() {
           Subject
         </label>
         <input
-          id="subject-input"
           type="text"
           name="subject"
           onChange={handleChange}
@@ -122,7 +108,6 @@ export default function ContactForm() {
           Message
         </label>
         <textarea
-          id="message-input"
           name="message"
           onChange={handleChange}
           required
