@@ -36,19 +36,20 @@ export default function ContactForm() {
     const form = e.target;
     const recaptchaValue = reCaptchaRef.current.getValue();
 
+    const formData = new FormData();
+    formData.append('form-name', 'contact');
+    formData.append('g-recaptcha-response', recaptchaValue);
+    Object.keys(state).forEach(key => formData.append(key, state[key]));
+
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': recaptchaValue,
-        ...state,
-      }),
+      body: formData,
     })
     .then(response => {
       if (response.ok) {
         setMessage("Message sent successfully!");
         setState({});
+        reCaptchaRef.current.reset();
       } else {
         setMessage("Failed to send message.");
       }
@@ -60,12 +61,9 @@ export default function ContactForm() {
 
   return (
     <form 
-      name = "contact" 
-      method = "POST" 
+      name="contact"
       onSubmit={onSubmit} 
       className="space-y-3"
-      data-netlify="true"
-      data-netlify-recaptcha="true"
     >
       <div className="grid grid-cols-2 gap-6">
         <div>
