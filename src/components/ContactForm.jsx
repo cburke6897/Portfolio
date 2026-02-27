@@ -3,6 +3,12 @@ import ReCaptcha from "react-google-recaptcha";
 
 const RECAPTCHA_KEY = '6LdsJHksAAAAAPyOGDU04CVbK8xlpWReYAHFytTq'
 
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
 export default function ContactForm() {
   const [state, setState] = useState({})
   const [message, setMessage] = useState(null);
