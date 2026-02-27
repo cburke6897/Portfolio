@@ -49,7 +49,7 @@ export default function ContactForm() {
       ...state,
     }));
 
-    fetch(window.location.pathname, {
+    fetch("/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
