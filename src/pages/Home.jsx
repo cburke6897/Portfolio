@@ -18,8 +18,8 @@ export default function Home() {
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex">
-        <div className="grid gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
-          <aside className="lg:sticky lg:top-24 self-start">
+        <div className="grid grid-cols-1 gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
+          <aside className="w-full justify-self-center flex justify-center lg:block lg:justify-start lg:justify-self-auto lg:sticky lg:top-24 self-start">
             <ImageCard />
           </aside>
 
@@ -27,15 +27,15 @@ export default function Home() {
             <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-light dark:text-text-dark mb-8 pr-32">
               SOFTWARE ENGINEER
             </h1>
-            <p className="text-base md:text-lg text-text-light/80 dark:text-text-dark/80 max-w-2xl mb-12 pr-40">
-              Passionate about building scalable systems with clean code. Experienced in designing robust architectures that solve real-world problems.
+            <p className="text-base md:text-lg text-text-light/80 dark:text-text-dark/80 max-w-3xl mb-12 lg:pr-40">
+              Passionate about building scalable systems with clean, maintainable code and thoughtful architecture. I enjoy turning complex product requirements into reliable software, from designing backend services and data flows to delivering polished user experiences. I focus on performance, clarity, and long-term maintainability so teams can ship faster and iterate with confidence.
             </p>
 
             <section className="mb-12">
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
                 MY <br /> PROJECTS
               </h2>
-              <div className="grid grid-cols-1 gap-6 -mx-4">
+              <div className="grid grid-cols-1 gap-6">
                 {projects.map((project) => (
                   <ProjectCard
                     key={project.title}
@@ -52,7 +52,7 @@ export default function Home() {
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
                 MY <br /> EXPERIENCE
               </h2>
-              <div className="grid grid-cols-1 gap-6 -mx-4">
+              <div className="grid grid-cols-1 gap-6">
                 {experiences.map((experience) => (
                   <ExperienceCard
                     key={experience.title}
@@ -69,7 +69,7 @@ export default function Home() {
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
                 MY <br /> TOOLS
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
                 {tools.map((tool) => (
                   <ToolCard
                     key={tool.title}
@@ -87,7 +87,7 @@ export default function Home() {
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-text-light dark:text-text-dark mb-6">
                 CONTACT <br /> ME
               </h2>
-              <div className="max-w-2xl">
+              <div>
                 <ContactForm />
               </div>
             </section>

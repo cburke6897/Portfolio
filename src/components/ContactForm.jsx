@@ -47,10 +47,11 @@ export default function ContactForm() {
       method = "POST"
       data-netlify="true"
       onSubmit={onSubmit}
+      className="space-y-3"
     >
       <input type="hidden" name="form-name" value="contact" />
-      <div className="grid grid-cols-2 gap-6">
-        <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-6">
+        <div className="w-full">
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
             Name
           </label>
@@ -65,7 +66,7 @@ export default function ContactForm() {
           />
         </div>
 
-        <div>
+        <div className="w-full">
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="email-input">
             Email
           </label>
@@ -81,7 +82,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div>
+      <div className="w-full">
         <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="subject-input">
           Subject
         </label>
@@ -96,7 +97,7 @@ export default function ContactForm() {
         />
       </div>
 
-      <div>
+      <div className="w-full">
         <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="message-input">
           Message
         </label>
@@ -115,7 +116,7 @@ export default function ContactForm() {
         
         <button
           type="submit"
-          className="flex-1 h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
+          className="w-full h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
         >
           Send Message
         </button>

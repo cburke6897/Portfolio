@@ -14,8 +14,8 @@ export default function Tools() {
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex">
-        <div className="grid gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
-          <aside className="lg:sticky lg:top-24 self-start">
+        <div className="grid grid-cols-1 gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
+          <aside className="w-full justify-self-center flex justify-center lg:block lg:justify-start lg:justify-self-auto lg:sticky lg:top-24 self-start">
             <ImageCard />
           </aside>
 
@@ -25,7 +25,7 @@ export default function Tools() {
             </h1>
 
             <section className="mb-12 grow">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
                 {tools.map((tool) => (
                   <ToolCard
                     key={tool.title}

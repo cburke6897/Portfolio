@@ -2,7 +2,7 @@ import StackIcon from "tech-stack-icons";
 
 function ToolCard({ icon: Icon, iconSrc, stackIconName, title, description, onClick }) {
   return (
-    <div className="group bg-white dark:bg-gray-800 rounded-2xl rounded-tl-none rounded-br-none p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer flex flex-row items-start gap-3" onClick={onClick}>
+    <div className="group w-full bg-white dark:bg-gray-800 rounded-2xl rounded-tl-none rounded-br-none p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer flex flex-row items-start gap-3" onClick={onClick}>
       <div className="shrink-0 w-10 h-10 flex items-center justify-center">
         {stackIconName ? (
           <StackIcon 

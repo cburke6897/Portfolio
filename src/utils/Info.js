@@ -8,7 +8,7 @@ export const projects = [
     image: urlCutrImage,
     link: "https://github.com/cburke6897/URL-Cutr",
     title: "URL Cutr",
-    description: "A URL shortener with in-built user dashboard for managing and tracking shortened links.",
+    description: "A URL shortener with built-in user dashboard for managing and tracking shortened links.",
   },
   {
     image: myLeagueImage,
