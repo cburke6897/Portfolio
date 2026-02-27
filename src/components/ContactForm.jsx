@@ -135,15 +135,6 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between gap-4 py-4">
-        <ReCaptcha
-          key={theme}
-          ref={reCaptchaRef} 
-          sitekey={RECAPTCHA_KEY}
-          size="normal"
-          theme={theme}
-          id={"recaptcha-google"}
-          onChange={(value) => setButtonDisabled(!value)}
-        />
         
         <button
           type="submit"
