@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useEffect, useState, useRef} from "react";
+import ReCaptcha from "react-google-recaptcha";
+
+const RECAPTCHA_KEY = '6LdsJHksAAAAAPyOGDU04CVbK8xlpWReYAHFytTq'
 
 export default function ContactForm() {
-  const [result, setResult] = useState(null);
+  const [state, setState] = useState({})
+  const [message, setMessage] = useState(null);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [theme, setTheme] = useState(() => (
     document.documentElement.classList.contains("dark") ? "dark" : "light"
   ));
+
+  const reCaptchaRef = useRef();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -21,37 +27,56 @@ export default function ContactForm() {
     return () => observer.disconnect();
   }, []);
 
-  const onCaptchaChange = (token) => {
-    setValue("h-captcha-response", token);
+  const handleChange = (e) => {
+    setState({...state, [e.target.name]: e.target.value })
   }
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    formData.append("access_key", "9c425fb7-29a8-4633-a930-0aee96006428");
+    const form = e.target;
+    const recaptchaValue = reCaptchaRef.current.getValue();
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': recaptchaValue,
+        ...state,
+      }),
+    })
+    .then(response => {
+      if (response.ok) {
+        setMessage("Message sent successfully!");
+        setState({});
+      } else {
+        setMessage("Failed to send message.");
+      }
+    })
+    .catch(() => {
+      setMessage("An error occurred while sending the message");
     });
-
-    const data = await response.json();
-    setResult({
-      success: data.success,
-      message: data.message || (data.success ? "Message sent successfully!" : "Failed to send message")
-    });
-  };
+  }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-3">
+    <form 
+      name = "contact" 
+      method = "POST" 
+      onSubmit={onSubmit} 
+      className="space-y-3"
+      data-netlify="true"
+      data-netlify-recaptcha="true"
+    >
       <div className="grid grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
             Name
           </label>
           <input
-            type="text"
+            id="name-input"
+            type="name"
             name="name"
+            onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Your name"
@@ -59,12 +84,14 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="email-input">
             Email
           </label>
           <input
+          id="email-input"
             type="email"
             name="email"
+            onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="your.email@example.com"
@@ -73,12 +100,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="subject-input">
           Subject
         </label>
         <input
+          id="subject-input"
           type="text"
           name="subject"
+          onChange={handleChange}
           required
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Message subject"
@@ -86,11 +115,13 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="message-input">
           Message
         </label>
         <textarea
+          id="message-input"
           name="message"
+          onChange={handleChange}
           required
           rows="6"
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
@@ -99,30 +130,24 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between gap-4 py-4">
-        <HCaptcha
-          sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-          reCaptchaCompat={false}
-          onVerify={onCaptchaChange}
-          theme={theme}
+        <ReCaptcha
+          key={theme}
+          ref={reCaptchaRef} 
+          sitekey={RECAPTCHA_KEY}
           size="normal"
+          theme={theme}
+          id={"recaptcha-google"}
+          onChange={(value) => setButtonDisabled(!value)}
         />
         
         <button
           type="submit"
-          className="flex-1 h-19.5 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors"
+          disabled={buttonDisabled}
+          className="flex-1 h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors"
         >
           Send Message
         </button>
       </div>
-      {result && (
-        <p className={`text-center text-sm font-medium ${
-          result.success 
-            ? "text-green-600 dark:text-green-400" 
-            : "text-red-600 dark:text-red-400"
-        }`}>
-          {result.message}
-        </p>
-      )} 
     </form>
   );
 }
