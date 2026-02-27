@@ -44,6 +44,11 @@ export default function ContactForm() {
     e.preventDefault();
     const recaptchaValue = reCaptchaRef.current.getValue();
 
+    if (!recaptchaValue) {
+      setMessage("Please complete the captcha.");
+      return;
+    }
+
     fetch("/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -73,9 +78,11 @@ export default function ContactForm() {
       name = "contact"
       method = "POST"
       data-netlify="true"
+      data-netlify-recaptcha="true"
       onSubmit={onSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
+      <div data-netlify-recaptcha="true"></div>
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
@@ -152,6 +159,18 @@ export default function ContactForm() {
         >
           Send Message
         </button>
+      </div>
+
+      <div className="min-h-8 flex items-center justify-center mt-4">
+        {message && (
+          <p className={`text-center text-sm font-medium ${
+            message.includes("successfully") 
+              ? "text-green-600 dark:text-green-400" 
+              : "text-red-600 dark:text-red-400"
+          }`}>
+            {message}
+          </p>
+        )}
       </div>
     </form>
   );
