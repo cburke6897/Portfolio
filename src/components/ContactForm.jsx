@@ -1,7 +1,4 @@
-import { useEffect, useState, useRef} from "react";
-import ReCaptcha from "react-google-recaptcha";
-
-const RECAPTCHA_KEY = '6LdsJHksAAAAAPyOGDU04CVbK8xlpWReYAHFytTq'
+import { useState } from "react";
 
 const encode = (data) => {
   return Object.keys(data)
@@ -12,26 +9,6 @@ const encode = (data) => {
 export default function ContactForm() {
   const [state, setState] = useState({})
   const [message, setMessage] = useState(null);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [theme, setTheme] = useState(() => (
-    document.documentElement.classList.contains("dark") ? "dark" : "light"
-  ));
-
-  const reCaptchaRef = useRef();
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const syncTheme = () => {
-      setTheme(root.classList.contains("dark") ? "dark" : "light");
-    };
-
-    syncTheme();
-
-    const observer = new MutationObserver(syncTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleChange = (e) => {
     setState(prev => ({
@@ -41,13 +18,7 @@ export default function ContactForm() {
   }
 
   const onSubmit = (e) => {
-    console.log("Submitting form with state:", state);
     e.preventDefault();
-
-    console.log(encode({
-      'form-name': "contact",
-      ...state,
-    }));
 
     fetch("/", {
       method: 'POST',
@@ -58,7 +29,6 @@ export default function ContactForm() {
       }),
     })
       .then(response => {
-        console.log("Form submission response:", response);
         if (response.ok) {
           setMessage({ type: "success", text: "Message sent successfully!" });
           setState({});
