@@ -43,7 +43,6 @@ export default function ContactForm() {
   const onSubmit = (e) => {
     console.log("Submitting form with state:", state);
     e.preventDefault();
-    const recaptchaValue = reCaptchaRef.current.getValue();
 
     console.log(encode({
       'form-name': "contact",
