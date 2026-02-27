@@ -1,23 +1,11 @@
-import { useEffect, useState, useRef} from "react";
-import ReCaptcha from "react-google-recaptcha";
-
-const RECAPTCHA_KEY = '6LdsJHksAAAAAPyOGDU04CVbK8xlpWReYAHFytTq'
-
-const encode = (data) => {
-  return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-}
+import { useEffect, useState } from "react";
 
 export default function ContactForm() {
   const [state, setState] = useState({})
   const [message, setMessage] = useState(null);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [theme, setTheme] = useState(() => (
     document.documentElement.classList.contains("dark") ? "dark" : "light"
   ));
-
-  const reCaptchaRef = useRef();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -33,45 +21,24 @@ export default function ContactForm() {
     return () => observer.disconnect();
   }, []);
 
-  const handleChange = (e) => {
-    setState(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  }
-
   const onSubmit = (e) => {
     e.preventDefault();
-    const recaptchaValue = reCaptchaRef.current.getValue();
+    const form = e.target;
+    const formData = new FormData(form);
 
-    if (!recaptchaValue) {
-      setMessage("Please complete the captcha.");
-      return;
-    }
-
-    fetch("/", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': "contact",
-        'g-recaptcha-response': recaptchaValue,
-        ...state,
-      }),
-    })
+    fetch("/", { method: "POST", body: formData })
       .then(response => {
         if (response.ok) {
           setMessage("Message sent successfully!");
-          setState({});
-          reCaptchaRef.current.reset();
-          setButtonDisabled(true);
+          form.reset();
         } else {
           setMessage("Failed to send message.");
         }
       })
       .catch(() => {
-        setMessage("An error occurred while sending the message");
+        setMessage("Failed to send message.");
       });
-  }
+  };
 
   return (
     <form
@@ -82,7 +49,6 @@ export default function ContactForm() {
       onSubmit={onSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
-      <div data-netlify-recaptcha="true"></div>
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
@@ -91,7 +57,6 @@ export default function ContactForm() {
           <input
             type="text"
             name="name"
-            onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Your name"
@@ -105,7 +70,6 @@ export default function ContactForm() {
           <input
             type="email"
             name="email"
-            onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="your.email@example.com"
@@ -120,7 +84,6 @@ export default function ContactForm() {
         <input
           type="text"
           name="subject"
-          onChange={handleChange}
           required
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Message subject"
@@ -133,7 +96,6 @@ export default function ContactForm() {
         </label>
         <textarea
           name="message"
-          onChange={handleChange}
           required
           rows="6"
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
@@ -142,19 +104,12 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between gap-4 py-4">
-        <ReCaptcha
-          key={theme}
-          ref={reCaptchaRef} 
-          sitekey={RECAPTCHA_KEY}
-          size="normal"
-          theme={theme}
-          id={"recaptcha-google"}
-          onChange={(value) => setButtonDisabled(!value)}
-        />
-        
+        <div className={`py-4 flex justify-start ${theme === "dark" ? "invert" : ""}`}>
+          <div data-netlify-recaptcha="true"></div>
+        </div>
+
         <button
           type="submit"
-          disabled={buttonDisabled}
           className="flex-1 h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
         >
           Send Message
