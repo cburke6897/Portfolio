@@ -87,6 +87,7 @@ export default function ContactForm() {
           <input
             type="text"
             name="name"
+            value={state.name || ""}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -101,6 +102,7 @@ export default function ContactForm() {
           <input
             type="email"
             name="email"
+            value={state.email || ""}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -116,6 +118,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="subject"
+          value={state.subject || ""}
           onChange={handleChange}
           required
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -129,6 +132,7 @@ export default function ContactForm() {
         </label>
         <textarea
           name="message"
+          value={state.message || ""}
           onChange={handleChange}
           required
           rows="6"
