@@ -41,27 +41,24 @@ export default function ContactForm() {
   }
 
   const onSubmit = (e) => {
-    console.log("Submitting form with state:", state);
     e.preventDefault();
-
-    console.log(encode({
-      'form-name': "contact",
-      ...state,
-    }));
+    const recaptchaValue = reCaptchaRef.current.getValue();
 
     fetch("/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': "contact",
+        'g-recaptcha-response': recaptchaValue,
         ...state,
       }),
     })
       .then(response => {
-        console.log("Form submission response:", response);
         if (response.ok) {
           setMessage("Message sent successfully!");
           setState({});
+          reCaptchaRef.current.reset();
+          setButtonDisabled(true);
         } else {
           setMessage("Failed to send message.");
         }
@@ -138,9 +135,19 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between gap-4 py-4">
+        <ReCaptcha
+          key={theme}
+          ref={reCaptchaRef} 
+          sitekey={RECAPTCHA_KEY}
+          size="normal"
+          theme={theme}
+          id={"recaptcha-google"}
+          onChange={(value) => setButtonDisabled(!value)}
+        />
         
         <button
           type="submit"
+          disabled={buttonDisabled}
           className="flex-1 h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
         >
           Send Message
