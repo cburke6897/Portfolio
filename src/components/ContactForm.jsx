@@ -42,6 +42,12 @@ export default function ContactForm() {
     e.preventDefault();
     const recaptchaValue = reCaptchaRef.current.getValue();
 
+    console.log(encode({
+      'form-name': "contact",
+      'g-recaptcha-response': recaptchaValue,
+      ...state,
+    }));
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
