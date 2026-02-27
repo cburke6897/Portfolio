@@ -34,7 +34,10 @@ export default function ContactForm() {
   }, []);
 
   const handleChange = (e) => {
-    setState({[e.target.name]: e.target.value})
+    setState(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   }
 
   const onSubmit = (e) => {
