@@ -47,7 +47,6 @@ export default function ContactForm() {
 
     console.log(encode({
       'form-name': "contact",
-      'g-recaptcha-response': recaptchaValue,
       ...state,
     }));
 
