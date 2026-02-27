@@ -56,7 +56,6 @@ export default function ContactForm() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': "contact",
-        'g-recaptcha-response': recaptchaValue,
         ...state,
       }),
     })
