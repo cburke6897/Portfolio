@@ -34,10 +34,11 @@ export default function ContactForm() {
   }, []);
 
   const handleChange = (e) => {
-    setState({...state, [e.target.name]: e.target.value })
+    setState({[e.target.name]: e.target.value})
   }
 
   const onSubmit = (e) => {
+    console.log("Submitting form with state:", state);
     e.preventDefault();
     const recaptchaValue = reCaptchaRef.current.getValue();
 
