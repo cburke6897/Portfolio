@@ -49,7 +49,7 @@ export default function ContactForm() {
       ...state,
     }));
 
-    fetch('/', {
+    fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -72,7 +72,13 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      name = "contact"
+      method = "POST"
+      data-netlify="true"
+      onSubmit={onSubmit}
+    >
+      <input type="hidden" name="form-name" value="contact" />
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
