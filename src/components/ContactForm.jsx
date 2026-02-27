@@ -51,17 +51,18 @@ export default function ContactForm() {
         ...state,
       }),
     })
-    .then(response => {
-      if (response.ok) {
-        setMessage("Message sent successfully!");
-        setState({});
-      } else {
-        setMessage("Failed to send message.");
-      }
-    })
-    .catch(() => {
-      setMessage("An error occurred while sending the message");
-    });
+      .then(response => {
+        console.log("Form submission response:", response);
+        if (response.ok) {
+          setMessage("Message sent successfully!");
+          setState({});
+        } else {
+          setMessage("Failed to send message.");
+        }
+      })
+      .catch(() => {
+        setMessage("An error occurred while sending the message");
+      });
   }
 
   return (
