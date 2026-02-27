@@ -67,6 +67,9 @@ export default function ContactForm() {
       data-netlify="true"
       data-netlify-recaptcha="true"
     >
+      <input type="hidden" name="form-name" value="contact-form"/>
+      <input type="hidden" name="bot-field"/>
+
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
