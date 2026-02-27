@@ -60,14 +60,14 @@ export default function ContactForm() {
       .then(response => {
         console.log("Form submission response:", response);
         if (response.ok) {
-          setMessage("Message sent successfully!");
+          setMessage({ type: "success", text: "Message sent successfully!" });
           setState({});
         } else {
-          setMessage("Failed to send message.");
+          setMessage({ type: "error", text: "Failed to send message." });
         }
       })
       .catch(() => {
-        setMessage("An error occurred while sending the message");
+        setMessage({ type: "error", text: "An error occurred while sending the message" });
       });
   }
 
@@ -145,6 +145,21 @@ export default function ContactForm() {
         >
           Send Message
         </button>
+      </div>
+
+      <div className="min-h-14">
+        {message && (
+          <div
+            className={`rounded-lg border px-4 py-3 text-sm font-medium ${
+              message.type === "success"
+                ? "border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-200"
+                : "border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-600 dark:bg-rose-900/40 dark:text-rose-200"
+            }`}
+            role="status"
+          >
+            {message.text}
+          </div>
+        )}
       </div>
     </form>
   );
