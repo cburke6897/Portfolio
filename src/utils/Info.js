@@ -1,20 +1,19 @@
 import myLeagueImage from "../assets/myleague.png";
 import urlCutrImage from "../assets/urlcutr.png";
 import fastapiIcon from "../assets/fastapi.svg";
-import viteIcon from "../assets/vite.svg";
 
 export const projects = [
   {
     image: urlCutrImage,
-    link: "https://github.com/cburke6897/URL-Cutr",
+    link: "https://urlcutr.app/",
     title: "URL Cutr",
-    description: "A URL shortener with built-in user dashboard for managing and tracking shortened links.",
+    description: "A URL shortener with built-in user dashboard for managing and tracking shortened links. Built with FastAPI, React, Azure, PostgreSQL, Redis, and Docker.",
   },
   {
     image: myLeagueImage,
     link: "https://github.com/cburke6897/MyLeague-Fantasy-Tracker",
     title: "MyLeague",
-    description: "A Java application built for class that enables drafting and managing a fantasy football league.",
+    description: "A Java application built with JavaFX and an external API to retrieve players and stats for drafting and managing a fantasy football league. Features a JSON file system for data persistence.",
   },
 ];
 
@@ -75,10 +74,10 @@ export const tools = [
     link: "https://react.dev",
   },
   {
-    iconSrc: viteIcon,
-    title: "Vite",
-    description: "Fast build tool",
-    link: "https://vitejs.dev",
+    stackIconName: "azure",
+    title: "Azure",
+    description: "Cloud deployment platform",
+    link: "https://azure.microsoft.com",
   },
   {
     iconSrc: fastapiIcon,
