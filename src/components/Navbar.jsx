@@ -15,7 +15,7 @@ export default function Navbar() {
     const navigate = useNavigate();
 
 	const [theme, setTheme] = useState(
-		localStorage.getItem("theme") || "dark"
+		localStorage.getItem("theme") || "light"
 	);
 
 	const navItems = [
