@@ -34,3 +34,9 @@
 }
 
 @custom-variant dark (&:is(.dark, .dark *));
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
