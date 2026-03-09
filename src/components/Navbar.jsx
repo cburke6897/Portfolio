@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createElement, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -54,7 +54,7 @@ export default function Navbar() {
                         onClick = {onClick}
 						className="flex h-10 w-10 items-center justify-center rounded-full text-text-light dark:text-text-dark transition-colors hover:bg-black/5 dark:hover:bg-white/10"
 					>
-						<Icon className="h-5 w-5" />
+						{createElement(Icon, { className: "h-5 w-5" })}
 					</button>
 				))}
 				<button
