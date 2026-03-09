@@ -97,4 +97,22 @@ export const tools = [
     description: "In-memory data store",
     link: "https://redis.io",
   },
+  {
+    stackIconName: "docker",
+    title: "Docker",
+    description: "Containerized app development",
+    link: "https://www.docker.com/",
+  },
+  {
+    stackIconName: "bash",
+    title: "Bash",
+    description: "Unix shell scripting",
+    link: "https://www.gnu.org/software/bash/",
+  },
+  {
+    stackIconName: "powershell",
+    title: "PowerShell",
+    description: "Task automation and scripting",
+    link: "https://learn.microsoft.com/powershell/",
+  },
 ];
