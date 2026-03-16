@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex flex-col">
-        <header className="relative w-full overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
+        <header className="relative hidden w-full overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark lg:block">
           <img
             src={headerImage}
             alt="Header"
