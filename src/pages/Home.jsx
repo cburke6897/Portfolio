@@ -5,6 +5,7 @@ import ProjectCard from "../components/ProjectCard";
 import ExperienceCard from "../components/ExperienceCard";
 import ToolCard from "../components/ToolCard";
 import ContactForm from "../components/ContactForm";
+import headerImage from "../assets/header.jpg";
 import { projects, experiences, tools } from "../utils/Info";
 
 
@@ -17,7 +18,16 @@ export default function Home() {
     <div className="min-h-screen bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition-colors flex flex-col">
       <Navbar />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex flex-col">
+        <header className="relative mx-auto mb-12 w-full max-w-7xl overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
+          <img
+            src={headerImage}
+            alt="Header"
+            className="h-64 w-full object-cover object-[50%_75%] md:h-80 lg:h-104"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/68 to-transparent dark:from-black dark:via-black/82 dark:to-transparent" />
+        </header>
+
         <div className="grid grid-cols-1 gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
           <aside className="w-full justify-self-center flex justify-center lg:block lg:justify-start lg:justify-self-auto lg:sticky lg:top-24 self-start">
             <ImageCard />
