@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-24 flex-1 flex flex-col">
-        <header className="relative mx-auto mb-12 w-full max-w-7xl overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
+        <header className="relative w-full overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
           <img
             src={headerImage}
             alt="Header"
@@ -28,12 +28,12 @@ export default function Home() {
           <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/68 to-transparent dark:from-black dark:via-black/82 dark:to-transparent" />
         </header>
 
-        <div className="grid grid-cols-1 gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full">
+        <div className="grid grid-cols-1 gap-y-12 gap-x-20 lg:grid-cols-[260px_1fr] w-full relative z-10 lg:-mt-105">
           <aside className="w-full justify-self-center flex justify-center lg:block lg:justify-start lg:justify-self-auto lg:sticky lg:top-24 self-start">
             <ImageCard />
           </aside>
 
-          <main>
+          <main className="lg:pt-104">
             <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-light dark:text-text-dark mb-8 pr-32">
               SOFTWARE ENGINEER
             </h1>
