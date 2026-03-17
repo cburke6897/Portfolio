@@ -25,10 +25,10 @@ export default function ProjectCard({
 				</div>
 
 				<div className="flex-1 p-4 flex flex-col justify-center">
-					<h3 className="text-xl font-semibold text-text-light dark:text-text-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
+					<h3 className="type-title font-semibold text-text-light dark:text-text-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
 						{title}
 					</h3>
-					<p className="text-base text-text-light/70 dark:text-text-dark/70 md:line-clamp-3 group-hover:text-text-light dark:group-hover:text-text-dark transition-colors">
+					<p className="type-text text-text-light/70 dark:text-text-dark/70 md:line-clamp-3 group-hover:text-text-light dark:group-hover:text-text-dark transition-colors">
 						{description}
 					</p>
 				</div>

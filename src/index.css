@@ -35,6 +35,33 @@
 
 @custom-variant dark (&:is(.dark, .dark *));
 
+:root {
+  --font-size-heading: clamp(3.5rem, 7vw, 7rem);
+  --font-size-title: clamp(1.25rem, 2.25vw, 1.75rem);
+  --font-size-text: clamp(1rem, 1.2vw, 1.125rem);
+  --font-size-small: 0.75rem;
+}
+
+.type-heading {
+  font-size: var(--font-size-heading);
+  line-height: 0.92;
+}
+
+.type-title {
+  font-size: var(--font-size-title);
+  line-height: 1.15;
+}
+
+.type-text {
+  font-size: var(--font-size-text);
+  line-height: 1.65;
+}
+
+.type-small {
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+}
+
 html,
 body {
   overflow-x: clip;

@@ -16,7 +16,7 @@ export default function Projects() {
           </aside>
 
           <main>
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-light dark:text-text-dark mb-8 pr-32">
+            <h1 className="type-heading font-bold text-text-light dark:text-text-dark mb-8 lg:pr-32">
               MY <br /> PROJECTS
             </h1>
 

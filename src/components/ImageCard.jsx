@@ -9,7 +9,7 @@ export default function ImageCard({
 }) {
 	return (
 		<div className="w-full flex justify-center lg:justify-start">
-			<div className="flex w-full max-w-55 sm:max-w-sm flex-col items-center gap-6 rounded-2xl rounded-tl-none rounded-br-none bg-surface-light/90 px-6 py-8 shadow-lg border border-text-light/10 dark:bg-surface-dark/90 dark:border-text-dark/10">
+			<div className="flex w-full max-w-64 sm:max-w-sm flex-col items-center gap-6 rounded-2xl rounded-tl-none rounded-br-none bg-surface-light/90 px-6 py-8 shadow-lg border border-text-light/10 dark:bg-surface-dark/90 dark:border-text-dark/10">
 				<div className="w-full">
 					<img
 						src={selfImage}
@@ -18,7 +18,7 @@ export default function ImageCard({
 					/>
 				</div>
 
-				<h2 className="text-xl font-semibold text-text-light dark:text-text-dark">
+				<h2 className="type-title whitespace-nowrap text-center font-semibold text-text-light dark:text-text-dark">
 					Christopher Burke
 				</h2>
 

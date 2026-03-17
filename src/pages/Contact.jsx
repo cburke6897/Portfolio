@@ -15,7 +15,7 @@ export default function Contact() {
           </aside>
 
           <main className="flex flex-col">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-light dark:text-text-dark mb-8 pr-32">
+            <h1 className="type-heading font-bold text-text-light dark:text-text-dark mb-8 lg:pr-32">
               CONTACT <br /> ME
             </h1>
 

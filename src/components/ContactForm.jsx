@@ -52,7 +52,7 @@ export default function ContactForm() {
       <input type="hidden" name="form-name" value="contact" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-6">
         <div className="w-full">
-          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
+          <label className="type-small block font-medium text-gray-900 dark:text-white mb-2" htmlFor="name-input">
             Name
           </label>
           <input
@@ -61,13 +61,13 @@ export default function ContactForm() {
             value={state.name || ""}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="type-text w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Your name"
           />
         </div>
 
         <div className="w-full">
-          <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="email-input">
+          <label className="type-small block font-medium text-gray-900 dark:text-white mb-2" htmlFor="email-input">
             Email
           </label>
           <input
@@ -76,14 +76,14 @@ export default function ContactForm() {
             value={state.email || ""}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="type-text w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="your.email@example.com"
           />
         </div>
       </div>
 
       <div className="w-full">
-        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="subject-input">
+        <label className="type-small block font-medium text-gray-900 dark:text-white mb-2" htmlFor="subject-input">
           Subject
         </label>
         <input
@@ -92,13 +92,13 @@ export default function ContactForm() {
           value={state.subject || ""}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="type-text w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Message subject"
         />
       </div>
 
       <div className="w-full">
-        <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2" htmlFor="message-input">
+        <label className="type-small block font-medium text-gray-900 dark:text-white mb-2" htmlFor="message-input">
           Message
         </label>
         <textarea
@@ -107,7 +107,7 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows="6"
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="type-text w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           placeholder="Your message..."
         />
       </div>
@@ -116,7 +116,7 @@ export default function ContactForm() {
         
         <button
           type="submit"
-          className="w-full h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white text-xl font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
+          className="type-text w-full h-18 px-6 bg-submit-button hover:bg-submit-button-hover dark:bg-submit-button-dark dark:hover:bg-submit-button-hover-dark text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-submit-button disabled:dark:hover:bg-submit-button-dark"
         >
           Send Message
         </button>
@@ -125,7 +125,7 @@ export default function ContactForm() {
       <div className="min-h-14">
         {message && (
           <div
-            className={`rounded-lg border px-4 py-3 text-sm font-medium ${
+            className={`type-small rounded-lg border px-4 py-3 font-medium ${
               message.type === "success"
                 ? "border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-200"
                 : "border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-600 dark:bg-rose-900/40 dark:text-rose-200"

@@ -41,10 +41,10 @@ function ToolCard({ icon: Icon, iconSrc, stackIconName, title, description, onCl
         ) : null}
       </div>
       <div className="flex flex-col flex-1 min-w-0">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+        <h3 className="type-small font-semibold text-gray-900 dark:text-white">
           {title}
         </h3>
-        <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+        <p className="type-small text-gray-600 dark:text-gray-400 line-clamp-2">
           {description}
         </p>
       </div>
