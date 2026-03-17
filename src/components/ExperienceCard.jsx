@@ -11,8 +11,8 @@ export default function ExperienceCard({
 					<h3 className="type-title font-semibold text-text-light dark:text-text-dark">
 						{title}
 					</h3>
-					<span className="type-small text-text-light/60 dark:text-text-dark/60">
-						{fromDate} - {toDate}
+						<span className="type-small text-text-light/60 dark:text-text-dark/60 md:whitespace-nowrap md:truncate">
+						{fromDate} - {toDate && toDate.replace(/ (\d{4})$/, '\u00A0$1')}
 					</span>
 				</div>
 
