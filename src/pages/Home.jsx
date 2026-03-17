@@ -19,12 +19,12 @@ export default function Home() {
       <Navbar />
 
       <div className="w-full px-4 pb-4 pt-24 flex-1">
-        <header className="relative mx-auto mb-12 w-full max-w-7xl overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
-          <img
-            src={headerImage}
-            alt="Header"
-            className="h-64 w-full object-cover object-[50%_75%] md:h-80 lg:h-104"
-          />
+        <header className="relative mx-auto mb-12 w-full max-w-6xl overflow-hidden rounded-4xl rounded-tl-none rounded-br-none border border-text-light/10 bg-surface-light shadow-lg dark:border-text-dark/10 dark:bg-surface-dark">
+            <img
+              src={headerImage}
+              alt="Header"
+              className="hidden md:block h-64 w-full object-cover object-[50%_75%] md:h-80 lg:h-80"
+            />
           <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/68 to-transparent dark:from-black dark:via-black/82 dark:to-transparent" />
         </header>
 
