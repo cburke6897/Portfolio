@@ -19,21 +19,21 @@ export const projects = [
 
 export const experiences = [
   {
-    title: "Education — Ball State University, IN",
+    title: "Education — Ball State University",
     fromDate: "Aug 2024",
     toDate: "May 2028",
     description:
-      "4.0 GPA. B.S. in Computer Science with a minor in Japanese. Concentrations in Web and Mobile Development, plus Data Analytics and Machine Learning.",
+      "Bachelors of Science with Honors (4.0 GPA). Majoring in Computer Science with a minor in Japanese. Concentrations in Web and Mobile Development, plus Data Analytics and Machine Learning.",
   },
   {
-    title: "Teaching Assistant — Ball State University, Muncie, IN",
+    title: "Teaching Assistant — Ball State University",
     fromDate: "Jan 2025",
     toDate: "Present",
     description:
       "Assisted 3 professors across 5 classes, tailoring support to each course. Tutored students in Python, Java, and core programming concepts while balancing 20 hours/week with classes, improving assignment outcomes.",
   },
   {
-    title: "Research Assistant — Ball State University, Muncie, IN",
+    title: "Research Assistant — Ball State University",
     fromDate: "Sep 2024",
     toDate: "Present",
     description:
