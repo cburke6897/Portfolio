@@ -75,7 +75,7 @@ export default function Navbar() {
 						type="button"
 						aria-label={label}
 						onClick={onClick}
-						className="group flex min-w-14 flex-col items-center gap-0.5 text-text-light dark:text-text-dark"
+						className="group flex min-w-14 flex-col items-center gap-0.5 text-text-light dark:text-text-dark cursor-pointer"
 						onMouseEnter={() => setHoveredButton(label)}
 						onMouseLeave={() => setHoveredButton(null)}
 					>
